@@ -1,19 +1,44 @@
 import React, { Component } from 'react';
-import data from './data'
+import dataContext from './dataContext';
+import { Link } from 'react-router-dom';
+function deleteNoteRequest(id,cb){
+    fetch(`http://localhost:9090/notes/${id}`,{
+        method:'DELETE',
+        headers:{'context-type':'application/json'}
+    }).then(res=>{
+        if(!res.ok){return res.json().then(err=>{throw err})}
+        return res.json()
+    }).then(resJson=>{
+        cb(id)
+    }).catch(error=>{console.log(error)})
+    
+}
 
 class Note extends Component{
+    static contextType=dataContext
     render(){
+        
+        const data=this.context
         console.log(this.props.match)
         const note= data.notes.find(n=>
             n.id === this.props.match.params.noteId)
+            console.log(data)
         return(
-            <div className="note">
+            <dataContext.Consumer>{
+                (context)=>(
+                    <div className="note">
                 <h2 className="noteTitle">
                     {note.name}
                 </h2>
         <span>{note.modified}</span>
-                <button className="deleteBtn">
-                    delete
+                <button className="deleteBtn"
+                onClick={()=>{
+                    deleteNoteRequest(note.id,context.deleteNote)
+                }}>
+                    <Link to='/'>
+                        delete
+                    </Link>
+                    
                 </button>
                 <div>
                    {note.content.split(/\n \r|\n/).map(
@@ -21,6 +46,10 @@ class Note extends Component{
                    )} 
                 </div>
             </div>
+                )}
+                
+            </dataContext.Consumer>
+            
         )
     }
 }

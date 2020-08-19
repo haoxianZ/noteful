@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Note from './note';
-import data from './data';
 export default class NoteList extends Component{
     render(){
                 console.log(this.props.match)
