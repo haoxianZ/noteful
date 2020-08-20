@@ -3,7 +3,6 @@ import { Route, Link, NavLink} from 'react-router-dom'
 import dataContext from './dataContext';
 import Sidebar from 'react-sidebar';
 import'./Main.css';
-
 function deleteNoteRequest(id,cb){
   fetch(`http://localhost:9090/notes/${id}`,{
       method:'DELETE',
@@ -53,6 +52,8 @@ export default class MainPage extends Component {
             </Link>
             </button>
         </ul>
+      
+        
         
         <ul className='List' style={{"textAlign":"center", 
       "listStyle":"none"}}>
@@ -69,9 +70,15 @@ export default class MainPage extends Component {
                >delete</button>
             </li>
           )}
-          <button>Add note</button>
+          
         </ul>
-      
+          <button>
+            <NavLink to='./addNote'>
+              add note
+            </NavLink>
+            
+          </button>
+
          
       
      

@@ -5,18 +5,19 @@ export default class AddFolder extends Component{
     static contextType=dataContext;
     handleSubmit=e=>{
             e.preventDefault()
-            const name=e.target.folder;
-            console.log(name.value,name)
-            fetch(`http://localhost:9090/folders`,{
+            const folder={"name":e.target.folder.value};
+            console.log(folder)
+        fetch(`http://localhost:9090/folders`,{
         method:'POST',
-        body:JSON.stringify(name.value),
-        headers:{'context-type':'application/json'}
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(folder),
     }).then(res=>{
         if(!res.ok){return res.json().then(err=>{throw err})}
         return res.json()
     }).then(resJson=>{
         console.log(resJson)
         this.context.addFolder(resJson)
+        this.props.history.push(`/`)
     }).catch(error=>{console.log(error)})
 
         }

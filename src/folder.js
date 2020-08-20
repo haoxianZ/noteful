@@ -4,7 +4,7 @@ import dataContext from './dataContext';
 function deleteNoteRequest(id,cb){
   fetch(`http://localhost:9090/notes/${id}`,{
       method:'DELETE',
-      headers:{'context-type':'application/json'}
+      headers:{'Context-Type':'application/json'}
   }).then(res=>{
       if(!res.ok){return res.json().then(err=>{throw err})}
       return res.json()
@@ -39,7 +39,10 @@ function deleteNoteRequest(id,cb){
                     {folder.name}
                 </h2>
                 <button className="AddBtn">
-                    ADD
+                  <Link to='/addNote'>
+                   ADD Note
+                   </Link>
+                   
                 </button>
                 <ul className='NoteList' style={{"textAlign":"center", 
       "listStyle":"none"}}>

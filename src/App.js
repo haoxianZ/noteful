@@ -6,6 +6,8 @@ import Sidebar from "react-sidebar";
 import Note from './note';
 import dataContext from './dataContext';
 import AddFolder from './AddFolder';
+import AddNote from './AddNote';
+import Error from './ErrorBoundaries';
 
 class App extends Component {
   state = {
@@ -52,13 +54,19 @@ addFolder = folder => {
     folders: [ ...this.state.folders, folder ],
   })
 }
+addNote = note =>{
+  this.setState({
+    notes:[...this.state.notes, note]
+  })
+}
   render() {
     const contextValue= {
       notes: this.state.notes,
       folders: this.state.folders,
       deleteNote:this.deleteNote,
       deleteFolder: this.deleteFolder,
-      addFolder:this.addFolder
+      addFolder:this.addFolder,
+      addNote:this.addNote
     }
     return (
       <div className='App'>
@@ -74,22 +82,40 @@ addFolder = folder => {
           />
           <Route
           path='/note/:noteId'
-          component={Note}
+          render={()=>(
+            <Error>
+              <Note />
+            </Error>
+          )}
           />
           <Route 
           path='/addFolder'
-          component={AddFolder}
+          render={()=>(
+            <Error>
+              <AddFolder />
+            </Error>
+          )}
+          
           />
-          <Route path='/folder/:folderId' component={Folder}/>
+          <Route 
+          path='/addNote'
+          render={()=>(
+            <Error>
+              <AddNote />
+            </Error>
+          )}
+          
+          />
+          <Route path='/folder/:folderId' 
+          render={()=>(
+            <Error>
+              <Folder />
+            </Error>
+          )}
+          />
           </Switch>
-          
-          
-        
-          
-          
         </main>
         </dataContext.Provider>
-          
         <footer>
           <p>© JZ, 2020. All Rights Reserved.</p>
         </footer>
