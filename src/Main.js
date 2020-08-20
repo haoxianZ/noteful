@@ -34,7 +34,7 @@ export default class MainPage extends Component {
     return (
       <>
 
-        <ul className="folderList">
+        <ul className={"folderList", 'List'}>
           <h3>Folders</h3>
           {data.folders.map(folder =>
             <li key={folder.id} className=''>
@@ -48,37 +48,37 @@ export default class MainPage extends Component {
               </button>
             </li>
           )}
-          
-        </ul>
-      <button className="addBtn">
+          <button className="addBtn">
             <Link to={`/addFolder`}>
               Add Folder
             </Link>
       </button>
-        <ul className='List' style={{"textAlign":"center", 
-      "listStyle":"none"}}>
-        <h3>Notes</h3>
+        </ul>
+      
+        <ul className={'noteList', 'List'}>
+        <h3 style={{'textAlign':'center'}}>Notes</h3>
           {data.notes.map(note =>
-            <li key={note.id}>
+            <li key={note.id} className='noteListItem'>
               <Link to={`/note/${note.id}`}>
                 {note.name}
               </Link>
-              <br/>
               Date modified {note.modified}
-              <button className={note.id} onClick={()=>{
+              <button 
+              className={note.id} onClick={()=>{
                  deleteNoteRequest(note.id,data.deleteNote)
               }}
                >delete</button>
+               <br/>
             </li>
           )}
-          
-        </ul>
           <button className='addNoteBtn'>
             <NavLink to='./addNote'>
               Add note
             </NavLink>
             
           </button>
+        </ul>
+          
         
 
          

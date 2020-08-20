@@ -1,6 +1,4 @@
 .folderList{
-    float: left;
-    clear: both;
     font-family: var(--custom-font);
     font-size: 20px;
     margin: 0 0 8px auto;
@@ -10,8 +8,13 @@
   
 }
 .List{
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+}
+.noteList{
     list-style: none;
+    text-align: center;
+    float: right;
     
 }
 .addBtn{
@@ -27,20 +30,14 @@ background-color: #cacaca;
   text-align: center;
   text-decoration: none;
   width: 60px;
-float: left;
+
+}
+.noteListItem{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+   
 }
 .addNoteBtn{
-background-color: #cacaca;
-  border-radius: 30px;
-  border: 0;
-  color: black;
-  display: flex;
-  float: right;
-  font-size: 12px;
-  font-weight: bold;
-  height: 60px;
-  padding: 14px;
-  text-align: center;
-  text-decoration: none;
-  width: 60px;
+    justify-content: center;
 }
