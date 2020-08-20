@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function deleteNoteRequest(id,cb){
     fetch(`http://localhost:9090/notes/${id}`,{
         method:'DELETE',
-        headers:{'context-type':'application/json'}
+        headers:{'Content-Type':'application/json'}
     }).then(res=>{
         if(!res.ok){return res.json().then(err=>{throw err})}
         return res.json()
@@ -15,6 +15,7 @@ function deleteNoteRequest(id,cb){
 }
 
 class Note extends Component{
+
     static contextType=dataContext
     render(){
         

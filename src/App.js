@@ -72,7 +72,7 @@ addNote = note =>{
       <div className='App'>
         <dataContext.Provider value={contextValue}>
           <Link to='/'><header>
-          <h1 style={{"textAlign":"center"}}> Noteful</h1>
+          <h1 style={{"textAlign":"center"}}>Noteful</h1>
         </header></Link>
         
         
@@ -82,34 +82,34 @@ addNote = note =>{
           />
           <Route
           path='/note/:noteId'
-          render={()=>(
+          render={(props)=>(
             <Error>
-              <Note />
+              <Note {...props}/>
             </Error>
           )}
           />
           <Route 
           path='/addFolder'
-          render={()=>(
+          render={(props)=>(
             <Error>
-              <AddFolder />
+              <AddFolder {...props}/>
             </Error>
           )}
           
           />
           <Route 
           path='/addNote'
-          render={()=>(
+          render={(props)=>(
             <Error>
-              <AddNote />
+              <AddNote {...props}/>
             </Error>
           )}
           
           />
           <Route path='/folder/:folderId' 
-          render={()=>(
+          render={(props)=>(
             <Error>
-              <Folder />
+              <Folder {...props}/>
             </Error>
           )}
           />

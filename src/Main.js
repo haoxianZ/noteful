@@ -33,9 +33,11 @@ export default class MainPage extends Component {
       const data=this.context
     return (
       <>
-        <ul className='FolderList' className="folderList">
+
+        <ul className="folderList">
+          <h3>Folders</h3>
           {data.folders.map(folder =>
-            <li key={folder.id}>
+            <li key={folder.id} className=''>
               <NavLink to={`/folder/${folder.id}`}>
                 {folder.name}
               </NavLink>
@@ -46,17 +48,16 @@ export default class MainPage extends Component {
               </button>
             </li>
           )}
-          <button >
+          
+        </ul>
+      <button className="addBtn">
             <Link to={`/addFolder`}>
               Add Folder
             </Link>
-            </button>
-        </ul>
-      
-        
-        
+      </button>
         <ul className='List' style={{"textAlign":"center", 
       "listStyle":"none"}}>
+        <h3>Notes</h3>
           {data.notes.map(note =>
             <li key={note.id}>
               <Link to={`/note/${note.id}`}>
@@ -72,12 +73,13 @@ export default class MainPage extends Component {
           )}
           
         </ul>
-          <button>
+          <button className='addNoteBtn'>
             <NavLink to='./addNote'>
-              add note
+              Add note
             </NavLink>
             
           </button>
+        
 
          
       

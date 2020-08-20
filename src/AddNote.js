@@ -22,6 +22,7 @@ export default class AddNote extends Component{
     }).then(resJson=>{
         console.log(resJson)
         this.context.addNote(resJson)
+        this.props.history.push(`/`)
     }).catch(error=>{console.log(error)})
 
         }

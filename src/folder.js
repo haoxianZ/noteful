@@ -4,7 +4,7 @@ import dataContext from './dataContext';
 function deleteNoteRequest(id,cb){
   fetch(`http://localhost:9090/notes/${id}`,{
       method:'DELETE',
-      headers:{'Context-Type':'application/json'}
+      headers:{'Content-Type':'application/json'}
   }).then(res=>{
       if(!res.ok){return res.json().then(err=>{throw err})}
       return res.json()

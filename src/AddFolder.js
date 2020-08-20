@@ -19,7 +19,7 @@ export default class AddFolder extends Component{
         this.context.addFolder(resJson)
         this.props.history.push(`/`)
     }).catch(error=>{console.log(error)})
-
+        
         }
     render(){
         const data = this.context;
