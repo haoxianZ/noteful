@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link, NavLink} from 'react-router-dom'
 import dataContext from './dataContext';
 import Sidebar from 'react-sidebar';
+import PropTypes from 'prop-types';
 import'./Main.css';
 function deleteNoteRequest(id,cb){
   fetch(`http://localhost:9090/notes/${id}`,{
@@ -78,15 +79,11 @@ export default class MainPage extends Component {
             
           </button>
         </ul>
-          
-        
-
-         
-      
-     
-     
       </>
     )
-  }  
-  
-  }
+  }   
+}
+
+MainPage.propTypes={
+  dataContext: PropTypes.object
+}

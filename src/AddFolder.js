@@ -1,5 +1,6 @@
 import React, { Component } from  'react';
 import dataContext from './dataContext';
+import PropTypes from 'prop-types';
 
 export default class AddFolder extends Component{
     static contextType=dataContext;
@@ -19,7 +20,7 @@ export default class AddFolder extends Component{
         this.context.addFolder(resJson)
         this.props.history.push(`/`)
     }).catch(error=>{console.log(error)})
-        
+
         }
     render(){
         const data = this.context;
@@ -38,4 +39,8 @@ export default class AddFolder extends Component{
         )
     }
 
+}
+
+AddFolder.propTypes={
+    folder: PropTypes.string.isRequired
 }

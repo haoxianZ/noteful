@@ -1,5 +1,6 @@
 import React, { Component } from  'react';
 import dataContext from './dataContext';
+import PropTypes from 'prop-types';
 
 export default class AddNote extends Component{
     static contextType=dataContext;
@@ -54,4 +55,10 @@ export default class AddNote extends Component{
         )
     }
 
+}
+
+AddNote.propTypes={
+    noteName: PropTypes.string.isRequired,
+    content:PropTypes.string.isRequired,
+    noteFolderId: PropTypes.isRequired
 }
