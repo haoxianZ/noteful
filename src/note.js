@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import dataContext from './dataContext';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 function deleteNoteRequest(id,cb){
     fetch(`http://localhost:9090/notes/${id}`,{
         method:'DELETE',
@@ -54,5 +56,9 @@ class Note extends Component{
         )
     }
 }
-
+Note.propType={
+    match: PropTypes.shape({
+      params: PropTypes.object
+    })
+  }
 export default Note

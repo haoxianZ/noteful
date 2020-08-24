@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom'
 import dataContext from './dataContext';
+import PropTypes from 'prop-types';
+
 function deleteNoteRequest(id,cb){
   fetch(`http://localhost:9090/notes/${id}`,{
       method:'DELETE',
@@ -66,5 +68,9 @@ function deleteNoteRequest(id,cb){
         )
     }
 }
-
+Folder.propType={
+  match: PropTypes.shape({
+    params: PropTypes.object
+  })
+}
 export default Folder
